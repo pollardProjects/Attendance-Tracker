@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.7506265664160401" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentController">
+    <items>
+    <AnchorPane prefHeight="400.0" prefWidth="800.0">
+         <children>
+            <HBox prefHeight="446.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <MenuBar fx:id="fileMenu" prefWidth="1000.0" style="-fx-background-color: #7DEDC8;" HBox.hgrow="ALWAYS">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="FILE">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Exit" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
+            <TableView fx:id="studentTable" layoutX="1.0" layoutY="30.0" prefHeight="400.0" prefWidth="798.0" style="-fx-background-color: #F2F9F7;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+              <columns>
+                  <TableColumn fx:id="firstNameCol" onEditCommit="#firstNameCol_OnEditCommit" prefWidth="124.0" style="background color: #DBFAF0;" text="First Name" />
+                  <TableColumn fx:id="lastNameCol" onEditCommit="#lastNameCol_OnEditCommit" prefWidth="131.0" text="Last Name" />
+                  <TableColumn fx:id="ageCol" onEditCommit="#ageCol_OnEditCommit" prefWidth="60.0" text="Age" />
+                  <TableColumn fx:id="genderCol" onEditCommit="#genderCol_OnEditCommit" prefWidth="111.0" text="Gender" />
+                <TableColumn fx:id="yearCol" onEditCommit="#yearCol_OnEditCommit" prefWidth="154.0" text="Year" />
+                  <TableColumn fx:id="totalCol" onEditCommit="#totalCol_OnEditCommit" prefWidth="129.0" text="Attendance" />
+                  <TableColumn fx:id="gpaCol" onEditCommit="#gpaCol_OnEditCommit" prefWidth="88.0" text="GPA" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="791.0" style="-fx-background-color: #7DEDC8;" stylesheets="@StudentStyle.css">
+         <children>
+            <TextField fx:id="firstNameField" layoutX="57.0" layoutY="46.0" promptText="First Name..." style="-fx-background-color: #DBFAF0;">
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="lastNameField" layoutX="205.0" layoutY="46.0" promptText="Last Name..." style="-fx-background-color: #DBFAF0;" />
+            <TextField fx:id="ageField" layoutX="57.0" layoutY="79.0" prefHeight="25.0" prefWidth="62.0" promptText="Age..." style="-fx-background-color: #DBFAF0;" />
+            <TextField fx:id="gpaField" layoutX="131.0" layoutY="79.0" prefHeight="25.0" prefWidth="62.0" promptText="GPA" style="-fx-background-color: #DBFAF0;" />
+            <ComboBox fx:id="genderBox" layoutX="205.0" layoutY="79.0" prefHeight="25.0" prefWidth="94.0" promptText="Gender" style="-fx-background-color: #DBFAF0;" />
+            <ComboBox fx:id="yearBox" layoutX="56.0" layoutY="112.0" prefWidth="150.0" promptText="Year in school" style="-fx-background-color: #DBFAF0;" />
+            <ComboBox fx:id="totalBox" layoutX="212.0" layoutY="112.0" prefHeight="25.0" prefWidth="141.0" promptText="Attendance" style="-fx-background-color: #DBFAF0;" />
+            <Button fx:id="addBtn" layoutX="220.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleAddButtonClick" style="-fx-border-color: #7AC4AB;" styleClass=".button" stylesheets="@StudentStyle.css" text="Add ">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="271.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClearButtonClick" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #7AC4AB;" styleClass=".button" stylesheets="@StudentStyle.css" text="Clear ">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></Button>
+            <VBox layoutX="399.0" spacing="8.0" AnchorPane.leftAnchor="399.0" AnchorPane.rightAnchor="194.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label disable="true" layoutX="447.0" layoutY="11.0" text="Update Student">
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label disable="true" layoutX="447.0" layoutY="37.0" prefHeight="16.0" prefWidth="185.0" text="1.) Filter by FIRST or LAST name.">
+                     <font>
+                        <Font name="Calibri Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="filterInput" layoutX="447.0" layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="14.0" prefWidth="185.0" promptText="Filter Table..." style="-fx-background-color: #DBFAF0;" />
+                  <Label disable="true" layoutX="447.0" layoutY="88.0" text="2.) Double click student from table.">
+                     <font>
+                        <Font name="Calibri Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label disable="true" layoutX="447.0" layoutY="106.0" text="3.) Make desired edits" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+             <Label layoutX="686.0" layoutY="142.0" prefHeight="27.0" prefWidth="240.0" text="Student Management System" textFill="#2419bf">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label disable="true" layoutX="51.0" layoutY="8.0" text="Student Information">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="deleteBtn" layoutX="639.0" layoutY="92.0" mnemonicParsing="false" onAction="#handleDeleteButtonClick" style="-fx-border-color: #7AC4AB;" styleClass=".button" stylesheets="@StudentStyle.css" text="Delete Student" />
+            <Label disable="true" layoutX="620.0" layoutY="12.0" text="Remove Student">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label disable="true" layoutX="620.0" layoutY="38.0" prefHeight="16.0" prefWidth="185.0" text="1.) Filter by FIRST or LAST name.">
+               <font>
+                  <Font name="Calibri Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label disable="true" layoutX="620.0" layoutY="66.0" text="2.) Select student from table.">
+               <font>
+                  <Font name="Calibri Italic" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
