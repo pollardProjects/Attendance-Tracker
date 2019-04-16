@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.7506265664160401" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #003300;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentController">
+    <items>
+    <AnchorPane prefHeight="500.0" prefWidth="700.0">
+         <children>
+            <HBox prefHeight="450.0" prefWidth="690.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <MenuBar fx:id="fileMenu" prefWidth="1000.0" style="-fx-background-color: #ffffe6;" HBox.hgrow="ALWAYS">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="FILE">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Exit" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
+            <TableView id="#studentTable" fx:id="studentTable" layoutX="7.0" layoutY="29.0" prefHeight="313.0" prefWidth="685.0" style="-fx-background-color: #ffffe6;" stylesheets="@application.css" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="29.0">
+              <columns>
+                  <TableColumn fx:id="firstNameCol" onEditCommit="#firstNameCol_OnEditCommit" prefWidth="138.0" style="-fx-background-color: #70db70;" text="First Name" />
+                  <TableColumn fx:id="lastNameCol" onEditCommit="#lastNameCol_OnEditCommit" prefWidth="139.0" style="-fx-background-color: #70db70;" text="Last Name" />
+                  <TableColumn fx:id="ageCol" onEditCommit="#ageCol_OnEditCommit" prefWidth="56.0" style="-fx-background-color: #70db70;" text="Age" />
+                  <TableColumn fx:id="genderCol" onEditCommit="#genderCol_OnEditCommit" prefWidth="86.0" style="-fx-background-color: #70db70;" text="Gender" />
+                <TableColumn fx:id="yearCol" onEditCommit="#yearCol_OnEditCommit" prefWidth="126.0" style="-fx-background-color: #70db70;" text="Year" />
+                  <TableColumn fx:id="courseCol" onEditCommit="#courseCol_OnEditCommit" prefWidth="144.0" style="-fx-background-color: #70db70;" text="Course" />
+                  <TableColumn fx:id="totalCol" minWidth="0.0" onEditCommit="#totalCol_OnEditCommit" prefWidth="104.0" style="-fx-background-color: #70db70;" text="Attendance" />
+                  <TableColumn fx:id="gpaCol" onEditCommit="#gpaCol_OnEditCommit" prefWidth="91.0" style="-fx-background-color: #70db70;" text="Grade" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="791.0">
+         <children>
+            <TextField fx:id="firstNameField" layoutX="29.0" layoutY="47.0" prefHeight="25.0" prefWidth="150.0" promptText="First Name..." style="-fx-background-color: #ffffe6;" stylesheets="@style.css">
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="lastNameField" layoutX="196.0" layoutY="46.0" prefHeight="25.0" prefWidth="153.0" promptText="Last Name..." style="-fx-background-color: #ffffe6;" />
+            <TextField fx:id="ageField" layoutX="31.0" layoutY="85.0" prefHeight="25.0" prefWidth="62.0" promptText="Age..." style="-fx-background-color: #ffffe6;" />
+            <ComboBox fx:id="genderBox" layoutX="114.0" layoutY="85.0" prefHeight="25.0" prefWidth="87.0" promptText="Gender" />
+            <ComboBox fx:id="yearBox" layoutX="221.0" layoutY="85.0" prefHeight="25.0" prefWidth="126.0" promptText="Year in school" />
+            <ComboBox fx:id="courseBox" layoutX="374.0" layoutY="44.0" prefWidth="150.0" promptText="Course..." />
+            <TextField fx:id="gpaField" layoutX="374.0" layoutY="80.0" prefHeight="25.0" prefWidth="62.0" promptText="0/100" style="-fx-background-color: #ffffe6;" />
+            <ComboBox fx:id="totalBox" layoutX="374.0" layoutY="115.0" prefHeight="25.0" prefWidth="141.0" promptText="Attendance" />
+            <Button fx:id="addBtn" layoutX="29.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleAddButtonClick" prefHeight="23.0" prefWidth="95.0" text="Add Student">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="135.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleClearButtonClick" prefHeight="25.0" prefWidth="95.0" styleClass=".button" text="Clear Form">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></Button>
+            <Label disable="true" layoutX="22.0" layoutY="6.0" text="Student Information" textFill="#f5f5f5">
+               <font>
+                  <Font name="Calibri Bold" size="24.0" />
+               </font>
+            </Label>
+            <VBox layoutX="558.0" layoutY="-2.0" prefHeight="141.0" prefWidth="305.0" spacing="4.0" AnchorPane.leftAnchor="558.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="-2.0">
+               <children>
+                  <Label disable="true" layoutX="447.0" layoutY="11.0" text="Update Student" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label disable="true" layoutX="447.0" layoutY="37.0" prefHeight="16.0" prefWidth="185.0" text="1.) Filter by FIRST or LAST name." textFill="#fcfafa">
+                     <font>
+                        <Font name="Calibri Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="filterInput" layoutX="447.0" layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="167.0" promptText="Filter Table..." style="-fx-background-color: #ffffe6;" />
+                  <Label disable="true" layoutX="447.0" layoutY="88.0" text="2.) Double click student from table." textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label disable="true" layoutX="447.0" layoutY="106.0" text="3.) Make desired edits" textFill="#fcfcfc">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <Button fx:id="deleteBtn" layoutX="751.0" layoutY="128.0" mnemonicParsing="false" onAction="#handleDeleteButtonClick" prefHeight="25.0" prefWidth="112.0" stylesheets="@style.css" text="Delete Student" />
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
